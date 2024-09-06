@@ -1,13 +1,16 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
 import * as bcrypt from 'bcrypt';
 import { Repository } from 'typeorm';
 import { Usuario } from '../entities/usuario.entity';
 
 @Injectable()
 export class UsuariosService {
-  constructor(private readonly repository: Repository<Usuario>) {}
+  constructor(
+    @InjectRepository(Usuario) private readonly repository: Repository<Usuario>,
+  ) {}
 
-  async cadastraNovoUsuario(novoUsuario: Usuario): Promise<Usuario> {
+  async cadastra(novoUsuario: Usuario): Promise<Usuario> {
     const usuarioEncontrado = await this._buscaUsuarioPorEmail(
       novoUsuario.email,
     );
