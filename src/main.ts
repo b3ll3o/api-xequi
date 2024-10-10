@@ -4,7 +4,9 @@ import { AppModule } from './app.module';
 import { ValidationPipeCustom } from './shared/pipes/validation.pipe.custom';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {cors: {
+    origin: '*'
+  }});
 
   const config = new DocumentBuilder()
     .setTitle('Xequi')
@@ -16,6 +18,6 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   app.useGlobalPipes(new ValidationPipeCustom());
-  await app.listen(3000);
+  await app.listen(3001);
 }
 bootstrap();
