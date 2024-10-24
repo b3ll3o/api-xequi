@@ -4,9 +4,11 @@ import { AppModule } from './app.module';
 import { ValidationPipeCustom } from './shared/pipes/validation.pipe.custom';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {cors: {
-    origin: '*'
-  }});
+  const app = await NestFactory.create(AppModule, {
+    cors: {
+      origin: '*',
+    },
+  });
 
   const config = new DocumentBuilder()
     .setTitle('Xequi')

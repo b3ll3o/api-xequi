@@ -5,6 +5,7 @@ import { UsuariosModule } from './usuarios/usuarios.module';
 import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtGuard } from './auth/application/guards/jwt.guard';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { JwtGuard } from './auth/application/guards/jwt.guard';
       entities: [join(__dirname, '/**/*.entity{.ts,.js}')],
       synchronize: true,
       autoLoadEntities: true,
+      namingStrategy: new SnakeNamingStrategy(),
     }),
     UsuariosModule,
     AuthModule,
