@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtGuard } from './auth/application/guards/jwt.guard';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+import { EmpresasModule } from './empresas/empresas.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
     }),
     UsuariosModule,
     AuthModule,
+    EmpresasModule,
   ],
   controllers: [],
   providers: [

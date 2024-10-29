@@ -1,4 +1,5 @@
 import {
+  Column,
   CreateDateColumn,
   DeleteDateColumn,
   UpdateDateColumn,
@@ -17,4 +18,6 @@ export abstract class EntidadeNotificavelRastreavel<
   dataDelecao?: Date;
   @VersionColumn()
   versao?: number;
+  @Column({ default: true })
+  ativo: boolean;
 }
